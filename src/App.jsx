@@ -4,12 +4,14 @@ import Body from './component/Body'
 import Login from './component/Login'
 import Signup from './component/Signup'
 import NotFound from './component/PageNotFound'
+import Feed from './component/Feed'
 
-function App() {
+function App() {  
   return (
     <>
     <Routes>
-      <Route path='/' element= {<Body />}>
+      <Route element= {<Body />} >
+      <Route path='/' element={<Feed />} />
       <Route path='/login' element={<Login />} />
       <Route path='/signup' element ={<Signup />} />
       </Route>
