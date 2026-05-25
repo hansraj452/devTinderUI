@@ -13,7 +13,6 @@ const Feed = () => {
       const res = await axios.get(CONSTANT.BASE_URL + "/feed", {
         withCredentials: true,
       });
-      console.log(res);
       dispatch(addfeed(res?.data?.user));
     } catch (err) {
       console.log(err);
@@ -22,7 +21,6 @@ const Feed = () => {
   useEffect(() => {
     fetchfeed();
   }, []);
-  console.log(feed);
   return (
     <>
       <div className="flex justify-center items-center pt-3">

@@ -26,7 +26,7 @@ const UserCard = ({ user }) => {
         <div className="card-body items-center text-center">
 
           {/* Name */}
-          <h2 className="card-title text-3xl font-bold break-words text-center">
+          <h2 className="card-title text-3xl font-bold break-word text-center">
             {firstName} {lastName}
           </h2>
 

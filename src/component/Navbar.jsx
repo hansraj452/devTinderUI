@@ -45,7 +45,7 @@ const Navbar = () => {
           <Toast type={toast.type} message={toast.message} />
         </div>
       )}
-      <div className="navbar bg-base-300 shadow-sm">
+      <div className="navbar bg-base-300 shadow-sm sticky top-0 z-10">
         <div className="flex-1 flex items-center gap-2">
           <Link to={"/"} className="btn btn-ghost text-xl">
             Dev-Tinder
@@ -56,7 +56,7 @@ const Navbar = () => {
           <div className="dropdown dropdown-end">
             {userData?.photoURL && (
               <div className=" flex gap-2 items-center ">
-                <h1>{userData?.firstName + userData?.lastName}</h1>
+                <h1>{userData?.firstName +' '+ userData?.lastName}</h1>
                 <div
                   tabIndex={0}
                   role="button"
@@ -82,7 +82,10 @@ const Navbar = () => {
                 </Link>
               </li>
               <li>
-                <Link>Settings</Link>
+                <Link to={'/requestrecivied'}>Connection Request</Link>
+              </li>
+               <li>
+                <Link to={'/viewconnection'}>View Connections</Link>
               </li>
               <li>
                 <Link onClick={handleLogout}>Logout</Link>
