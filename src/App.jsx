@@ -6,6 +6,8 @@ import Signup from './component/Signup'
 import NotFound from './component/PageNotFound'
 import Feed from './component/Feed'
 import Profile from './component/Profile'
+import RequestReceived from './component/RequestReceived'
+import ViewConnection from './component/ViewConnection'
 
 function App() {  
   return (
@@ -14,6 +16,8 @@ function App() {
       <Route  element= {<Body />} >
       <Route path='/' element={<Feed />} />
       <Route path='/profile' element={<Profile />} />
+      <Route path='/requestrecivied' element={<RequestReceived />} />
+      <Route path='/viewconnection' element={<ViewConnection />} />
       </Route>
       <Route path='/login' element={<Login />} />
       <Route path='/signup' element ={<Signup />} />
