@@ -5,40 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { addConnection, removeConnection   } from "../utils/connectionSlice";
 
 const ViewConnection = () => {
-  // const connections = [
-  //   {
-  //     id: 1,
-  //     name: "Sophia",
-  //     age: 24,
-  //     gender: "Female",
-  //     about: "Love travelling, coffee, and long conversations.",
-  //     image: "https://randomuser.me/api/portraits/women/44.jpg",
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "James",
-  //     age: 27,
-  //     gender: "Male",
-  //     about: "Fitness enthusiast and tech lover.",
-  //     image: "https://randomuser.me/api/portraits/men/32.jpg",
-  //   },
-  //   {
-  //     id: 3,
-  //     name: "Emma",
-  //     age: 22,
-  //     gender: "Female",
-  //     about: "Passionate about music and photography.",
-  //     image: "https://randomuser.me/api/portraits/women/68.jpg",
-  //   },
-  //   {
-  //     id: 4,
-  //     name: "Michael",
-  //     age: 29,
-  //     gender: "Male",
-  //     about: "Foodie who enjoys exploring new places.",
-  //     image: "https://randomuser.me/api/portraits/men/45.jpg",
-  //   },
-  // ];
   const connections = useSelector((state) => state.connection);
   console.log(connections)
   const dispatch = useDispatch();

@@ -73,7 +73,7 @@ const EditProfile = ({ user }) => {
           <Toast type={toast.type} message={toast.message} />
         </div>
       )}
-    <div className=" flex">
+    <div className=" flex sm:flex flex-wrap sm: items-center justify-center">
       <div className="card bg-base-200 w-96 shadow-xl p-6">
         <h2 className="text-2xl font-bold mb-5 text-center">
           Edit Profile
