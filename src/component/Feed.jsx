@@ -21,6 +21,7 @@ const Feed = () => {
   useEffect(() => {
     fetchfeed();
   }, []);
+  console.log(feed)
   return (
     <>
       <div className="flex justify-center items-center pt-3">
