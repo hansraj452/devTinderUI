@@ -10,8 +10,8 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [emailId, setEmail] = useState("singh@gmail.com");
-  const [password, setPassword] = useState("SinghHarbajan@134");
+  const [emailId, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
   const [toast, setToast] = useState({

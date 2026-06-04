@@ -6,10 +6,10 @@ import Toast from "./Toast";
 
 export default function SignupPage() {
   const [formData, setFormData] = useState({
-    firstName: "Hulk",
-    lastName: "Hulk",
-    emailId: "Hulk@gmail.com",
-    password: "Hulk@1234",
+    firstName: "",
+    lastName: "",
+    emailId: "",
+    password: "",
   });
   const [toast, setToast] = useState({
   show: false,
