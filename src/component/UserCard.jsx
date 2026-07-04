@@ -2,10 +2,20 @@ import axios from "axios";
 import { CONSTANT } from "../utils/constant";
 import { useDispatch } from "react-redux";
 import { removefeed } from "../utils/feedSlice";
-
+import blueTick from "../assets/icons8-blue-tick.svg";
 
 const UserCard = ({ user }) => {
-  const { _id, firstName, lastName, photoURL, skill, about, age, gender } = user;
+  const {
+    _id,
+    firstName,
+    lastName,
+    photoURL,
+    skill,
+    about,
+    age,
+    gender,
+    isPremium,
+  } = user;
   const dispatch = useDispatch();
   const handleRequest = async (status, id) => {
     try {
@@ -16,7 +26,7 @@ const UserCard = ({ user }) => {
           withCredentials: true,
         },
       );
-      dispatch(removefeed(id))
+      dispatch(removefeed(id));
     } catch (err) {
       console.log(err);
     }
@@ -37,8 +47,17 @@ const UserCard = ({ user }) => {
         {/* Card Body */}
         <div className="card-body items-center text-center">
           {/* Name */}
-          <h2 className="card-title text-3xl font-bold break-word text-center">
-            {firstName} {lastName}
+          <h2 className="card-title text-3xl font-bold break-words flex items-center justify-center gap-2">
+            <span>
+              {firstName} {lastName}
+            </span>
+            {isPremium && (
+              <img
+                src={blueTick}
+                alt="Premium User"
+                className="w-6 h-6 inline-block shrink-0"
+              />
+            )}
           </h2>
 
           {/* Age + Gender */}
@@ -90,7 +109,7 @@ const UserCard = ({ user }) => {
 
             <button
               className="btn btn-primary w-[48%]"
-              onClick={() => handleRequest("interested" , _id)}
+              onClick={() => handleRequest("interested", _id)}
             >
               Interested
             </button>

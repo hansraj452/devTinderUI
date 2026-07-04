@@ -88,11 +88,15 @@ const Navbar = () => {
                 <Link to={'/viewconnection'}>View Connections</Link>
               </li>
               <li>
+                <Link to={'/premium'}>Premium</Link>
+              </li>
+              <li>
                 <Link to={'/updatepassword'}>Update Password</Link>
               </li>
               <li>
                 <Link onClick={handleLogout}>Logout</Link>
               </li>
+              
             </ul>
           </div>
         </div>
