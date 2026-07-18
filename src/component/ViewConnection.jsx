@@ -2,30 +2,32 @@ import axios from "axios";
 import { CONSTANT } from "../utils/constant";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addConnection, removeConnection   } from "../utils/connectionSlice";
+import { addConnection, removeConnection } from "../utils/connectionSlice";
+import { Link } from "react-router-dom";
 
 const ViewConnection = () => {
   const connections = useSelector((state) => state.connection);
-  console.log(connections)
   const dispatch = useDispatch();
-  const fetchConnections = async () =>{
-    try{
+  const fetchConnections = async () => {
+    try {
       dispatch(removeConnection());
-      const connections = await axios.get(CONSTANT.BASE_URL + "/user/connections" , {
-        withCredentials : true
-      })
-      dispatch(addConnection(connections.data.data))
+      const connections = await axios.get(
+        CONSTANT.BASE_URL + "/user/connections",
+        {
+          withCredentials: true,
+        },
+      );
+      dispatch(addConnection(connections.data.data));
+    } catch (err) {
+      console.log(err);
     }
-    catch(err){
-      console.log(err)
-    }
-  }
+  };
 
-  useEffect(()=>{
-    fetchConnections()
-  }, [])
+  useEffect(() => {
+    fetchConnections();
+  }, []);
 
-    if (!connections) return;
+  if (!connections) return;
   if (connections.length == 0)
     return (
       <>
@@ -38,10 +40,7 @@ const ViewConnection = () => {
   return (
     <div className="min-h-screen bg-base-200 p-6 pb-24">
       <div className="max-w-5xl mx-auto">
-        
-        <h1 className="text-3xl font-bold text-center mb-8">
-          My Connections
-        </h1>
+        <h1 className="text-3xl font-bold text-center mb-8">My Connections</h1>
 
         <div className="flex flex-col gap-5">
           {connections?.map((user) => (
@@ -50,9 +49,7 @@ const ViewConnection = () => {
               className="card bg-base-100 shadow-md border border-base-300"
             >
               <div className="card-body">
-
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
-
                   {/* User Info */}
                   <div className="flex items-center gap-5">
                     <div className="avatar">
@@ -66,9 +63,7 @@ const ViewConnection = () => {
                         {user.firstName} {user.lastName}
                       </h2>
 
-                      <p className="text-base-content/70">
-                        Age: {user.age}
-                      </p>
+                      <p className="text-base-content/70">Age: {user.age}</p>
 
                       <p className="text-base-content/70">
                         Gender: {user.gender}
@@ -77,30 +72,28 @@ const ViewConnection = () => {
                   </div>
 
                   {/* Connection Badge */}
-                  <div>
+                  <div className=" flex flex-col gap-5">
                     <button className="btn btn-primary btn-outline">
                       Connected
                     </button>
+                    <Link to ={`/chat/${user._id}`} style={{ display: "inline-block" }}>
+                      <button className="btn btn-primary btn-outline ">
+                        Message 💬
+                      </button>
+                    </Link>
                   </div>
-
                 </div>
 
                 {/* About Section */}
                 <div className="mt-4">
-                  <h3 className="font-semibold text-lg mb-1">
-                    About
-                  </h3>
+                  <h3 className="font-semibold text-lg mb-1">About</h3>
 
-                  <p className="text-base-content/70">
-                    {user.about}
-                  </p>
+                  <p className="text-base-content/70">{user.about}</p>
                 </div>
-
               </div>
             </div>
           ))}
         </div>
-
       </div>
     </div>
   );

@@ -30,7 +30,6 @@ const RequestReceived = () => {
           withCredentials: true,
         },
       );
-      console.log(requests);
       dispatch(addRequests(requests?.data?.data));
     } catch (err) {
       console.log(err);

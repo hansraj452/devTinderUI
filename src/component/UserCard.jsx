@@ -1,8 +1,8 @@
 import axios from "axios";
 import { CONSTANT } from "../utils/constant";
 import { useDispatch } from "react-redux";
-import { removefeed } from "../utils/feedSlice";
 import blueTick from "../assets/icons8-blue-tick.svg";
+import { removeUserFromFeed } from "../utils/feedSlice";
 
 const UserCard = ({ user }) => {
   const {
@@ -17,22 +17,21 @@ const UserCard = ({ user }) => {
     isPremium,
   } = user;
   const dispatch = useDispatch();
-  const handleRequest = async (status, id) => {
-    try {
-      await axios.post(
-        `${CONSTANT.BASE_URL}/request/send/${status}/${id}`,
-        {},
-        {
-          withCredentials: true,
-        },
-      );
-      dispatch(removefeed(id));
-    } catch (err) {
-      console.log(err);
-    }
-  };
+const handleRequest = async (status, userId) => {
+  try {
+    const res = await axios.post(
+      `${CONSTANT.BASE_URL}/request/send/${status}/${userId}`,{},
+      { withCredentials: true }
+    );
 
-  return (
+    console.log("API Success:", res.data);
+    dispatch(removeUserFromFeed(userId));
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+ return (
     <div className="flex justify-center items-center min-h-[40%] px-4">
       <div className="card w-96 bg-base-300 shadow-2xl border border-base-300 hover:shadow-primary/20 hover:-translate-y-0.5 transition-all duration-300 overflow-hidden">
         {/* Profile Image */}
